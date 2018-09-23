@@ -20,10 +20,18 @@ describe('Address book', function() {
         expect(addressBook.checkContact(0)).not.toBeDefined();
     })
 
-    it('This should return the initial list of contacts.', function() {
+    describe('Async addressbook', function() {
 
-        addressBook.getInitialContacts();
+        beforeEach(function (done) {
+            addressBook.getInitialContacts(function () {
+                done();
+            });
+        });
 
-        expect(addressBook.initialContacts).toBe(true);
+        it('This should return the initial list of contacts.', function (done) {
+
+            expect(addressBook.initialContacts).toBe(true);
+            done();
+        })
     })
 })

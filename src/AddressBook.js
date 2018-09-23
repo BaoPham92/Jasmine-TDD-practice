@@ -2,6 +2,7 @@ class AddressBook {
     constructor() {
         
         this.contactList = [];
+        this.initialContacts = false;
     }
 
     addContact(contact) {
@@ -14,5 +15,17 @@ class AddressBook {
 
     deleteContact(index) {
         this.contactList.splice(index, 1);
+    }
+
+    getInitialContacts(initial) {
+
+        setTimeout(() => {
+
+            this.initialContacts = true;
+
+            if (initial) {
+                return initial();
+            }
+        }, 5);
     }
 }
